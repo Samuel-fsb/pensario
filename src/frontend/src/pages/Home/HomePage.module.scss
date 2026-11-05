@@ -1,0 +1,266 @@
+@use '../../styles/variables.scss' as *;
+
+.homeContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-cream-50;
+}
+
+.heroSection {
+  position: relative;
+  min-height: calc(100vh - 65px);
+  display: flex;
+  align-items: center;
+  padding: 4rem 2rem;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    min-height: 85vh;
+    padding: 3rem 1.25rem;
+    align-items: flex-end;
+  }
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/hero-landscape.jpg');
+  background-size: cover;
+  background-position: center right;
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    background-position: 70% center;
+  }
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  // Subtle gradient on the left side to keep white text readable without hiding landscape
+  background: linear-gradient(
+    90deg,
+    rgba(20, 39, 32, 0.75) 0%,
+    rgba(20, 39, 32, 0.5) 45%,
+    rgba(20, 39, 32, 0.1) 75%,
+    rgba(20, 39, 32, 0.0) 100%
+  );
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    background: linear-gradient(
+      180deg,
+      rgba(20, 39, 32, 0.3) 0%,
+      rgba(20, 39, 32, 0.7) 60%,
+      rgba(20, 39, 32, 0.9) 100%
+    );
+  }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  max-width: 640px;
+  margin-left: 5%;
+
+  @media (max-width: 1200px) {
+    margin-left: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+
+.heroTitle {
+  font-family: $font-serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 600;
+  color: $color-cream-50;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.heroSubtitle {
+  font-family: $font-sans;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  color: rgba(255, 248, 234, 0.92);
+  line-height: 1.5;
+  margin-bottom: 2.25rem;
+  max-width: 520px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ctaGroup {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.secondaryCtaLink {
+  text-decoration: none;
+}
+
+.heroSecondaryBtn {
+  border-color: rgba(255, 248, 234, 0.6) !important;
+  color: $color-cream-50 !important;
+  background-color: rgba(29, 59, 48, 0.4) !important;
+
+  &:hover {
+    background-color: rgba(29, 59, 48, 0.8) !important;
+    border-color: $color-cream-50 !important;
+  }
+}
+
+// About section
+.aboutSection {
+  background-color: $color-cream-100;
+  padding: 5rem 2rem;
+  border-top: 1px solid $color-sand-300;
+
+  @media (max-width: 768px) {
+    padding: 3.5rem 1.25rem;
+  }
+}
+
+.aboutContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.aboutHeader {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3.5rem;
+}
+
+.aboutBadge {
+  display: inline-block;
+  font-family: $font-sans;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $color-gold-600;
+  background-color: rgba(231, 170, 50, 0.15);
+  padding: 0.25rem 0.875rem;
+  border-radius: $radius-full;
+  margin-bottom: 1rem;
+}
+
+.aboutTitle {
+  font-family: $font-serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  color: $color-forest-900;
+  margin-bottom: 1.25rem;
+}
+
+.aboutText {
+  font-size: 1.05rem;
+  color: $color-text-700;
+  line-height: 1.6;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.featureCard {
+  background-color: $color-cream-50;
+  border: 1px solid $color-sand-300;
+  border-radius: $radius-lg;
+  padding: 2.25rem 1.75rem;
+  box-shadow: $shadow-sm;
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-md;
+  }
+}
+
+.featureIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: $radius-md;
+  background-color: rgba(231, 170, 50, 0.15);
+  color: $color-gold-600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.featureTitle {
+  font-family: $font-serif;
+  font-size: 1.25rem;
+  color: $color-forest-900;
+  margin-bottom: 0.625rem;
+}
+
+.featureDesc {
+  font-size: 0.95rem;
+  color: $color-text-700;
+  line-height: 1.5;
+}
+
+// Footer
+.footer {
+  background-color: $color-forest-900;
+  color: $color-cream-50;
+  padding: 3rem 2rem 2.5rem;
+  margin-top: auto;
+}
+
+.footerInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.footerBrand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @media (max-width: 600px) {
+    align-items: center;
+  }
+}
+
+.footerTagline {
+  font-size: 0.875rem;
+  color: rgba(255, 248, 234, 0.7);
+}
+
+.copyright {
+  font-size: 0.8125rem;
+  color: rgba(255, 248, 234, 0.6);
+}
+

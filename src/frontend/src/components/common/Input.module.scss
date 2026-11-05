@@ -1,0 +1,118 @@
+@use '../../styles/variables.scss' as *;
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+  text-align: left;
+}
+
+.label {
+  font-family: $font-sans;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: $color-forest-900;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  height: 44px;
+  padding: 0 1rem;
+  background-color: $color-cream-50;
+  border: 1px solid $color-sand-300;
+  border-radius: $radius-md;
+  color: $color-forest-900;
+  font-size: 0.95rem;
+  transition: all $transition-fast;
+
+  &::placeholder {
+    color: $color-text-500;
+    opacity: 0.7;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-gold-500;
+    box-shadow: 0 0 0 2px rgba(231, 170, 50, 0.25);
+  }
+
+  &:disabled {
+    background-color: $color-cream-100;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  &.withLeftIcon {
+    padding-left: 2.5rem;
+  }
+
+  &.withPasswordToggle {
+    padding-right: 2.75rem;
+  }
+}
+
+.leftIcon {
+  position: absolute;
+  left: 0.875rem;
+  color: $color-text-500;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  color: $color-text-700;
+  border-radius: $radius-sm;
+
+  &:hover {
+    color: $color-forest-900;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-gold-500;
+  }
+}
+
+.errorMessage {
+  font-size: 0.8125rem;
+  color: $color-error;
+  margin-top: 0.125rem;
+}
+
+.helperText {
+  font-size: 0.8125rem;
+  color: $color-text-700;
+  margin-top: 0.125rem;
+}
+
+.hasError {
+  .input {
+    border-color: $color-error;
+
+    &:focus {
+      border-color: $color-error;
+      box-shadow: 0 0 0 2px rgba(197, 61, 61, 0.2);
+    }
+  }
+
+  .label {
+    color: $color-error;
+  }
+}
+

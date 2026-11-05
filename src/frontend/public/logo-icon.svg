@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" fill="none">
+  <!-- Sun rays -->
+  <g fill="#E7AA32">
+    <!-- Center ray -->
+    <rect x="47.5" y="4" width="5" height="12" rx="2.5" />
+    <!-- 22.5 deg left/right -->
+    <rect x="47.5" y="4" width="5" height="11" rx="2.5" transform="rotate(-22.5 50 48)" />
+    <rect x="47.5" y="4" width="5" height="11" rx="2.5" transform="rotate(22.5 50 48)" />
+    <!-- 45 deg left/right -->
+    <rect x="47.5" y="5" width="5" height="10" rx="2.5" transform="rotate(-45 50 48)" />
+    <rect x="47.5" y="5" width="5" height="10" rx="2.5" transform="rotate(45 50 48)" />
+    <!-- 67.5 deg left/right -->
+    <rect x="47.5" y="6" width="5" height="9" rx="2.5" transform="rotate(-67.5 50 48)" />
+    <rect x="47.5" y="6" width="5" height="9" rx="2.5" transform="rotate(67.5 50 48)" />
+    <!-- Sun semi-circle -->
+    <path d="M 32 48 A 18 18 0 0 1 68 48 Z" />
+  </g>
+  <!-- Open Book in Forest Green -->
+  <g fill="#1D3B30">
+    <!-- Left page outline / stylized curve -->
+    <path d="M 48 52 C 34 50 20 54 12 60 C 12 55 26 49 48 50 Z" />
+    <path d="M 48 55 C 32 54 18 60 10 68 C 19 63 35 59 48 61 Z" />
+    <path d="M 49 53 C 33 51 18 56 11 63 C 10 65 11 67 13 67 C 22 62 36 58 49 60 Z" />
+    <!-- Right page outline / stylized curve -->
+    <path d="M 52 52 C 66 50 80 54 88 60 C 88 55 74 49 52 50 Z" />
+    <path d="M 52 55 C 68 54 82 60 90 68 C 81 63 65 59 52 61 Z" />
+    <path d="M 51 53 C 67 51 82 56 89 63 C 90 65 89 67 87 67 C 78 62 64 58 51 60 Z" />
+  </g>
+</svg>
+

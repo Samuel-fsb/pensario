@@ -1,0 +1,175 @@
+@use '../../styles/variables.scss' as *;
+
+.header {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  background-color: $color-forest-900;
+  color: $color-cream-50;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  &.transparent {
+    background-color: rgba(29, 59, 48, 0.95);
+    backdrop-filter: blur(8px);
+  }
+}
+
+.inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.navLink {
+  font-family: $font-sans;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.85);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  position: relative;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-cream-50;
+  }
+
+  &.active {
+    color: $color-cream-50;
+    font-weight: 600;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $color-gold-500;
+      border-radius: $radius-full;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loginLink {
+  text-decoration: none;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.logoutButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 248, 234, 0.9);
+  font-family: $font-sans;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: none;
+  border: none;
+  padding: 0.375rem 0.625rem;
+  border-radius: $radius-sm;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $color-gold-400;
+    background-color: rgba(255, 255, 255, 0.06);
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.mobileMenuToggle {
+  display: none;
+  background: none;
+  border: none;
+  color: $color-cream-50;
+  padding: 0.25rem;
+  border-radius: $radius-sm;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.mobileDrawer {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    background-color: $color-forest-900;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.25rem;
+  }
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobileNavLink {
+  font-family: $font-sans;
+  font-size: 1.05rem;
+  color: $color-cream-50;
+  text-decoration: none;
+  padding: 0.5rem 0;
+
+  &:hover {
+    color: $color-gold-400;
+  }
+}
+
+.mobileActionWrapper {
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobileLogoutButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $color-gold-400;
+  font-size: 1rem;
+  font-family: $font-sans;
+  padding: 0.5rem 0;
+  background: none;
+  border: none;
+}
+

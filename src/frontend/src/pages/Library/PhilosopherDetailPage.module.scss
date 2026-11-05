@@ -1,0 +1,186 @@
+@use '../../styles/variables.scss' as *;
+
+.pageContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-cream-50;
+}
+
+.mainContent {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 2rem 5rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1.25rem 4rem;
+  }
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-sans;
+  font-size: 0.95rem;
+  color: $color-text-700;
+}
+
+.breadcrumbHome {
+  display: inline-flex;
+  align-items: center;
+  color: $color-forest-900;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-gold-600;
+  }
+}
+
+.breadcrumbLink {
+  color: $color-forest-900;
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.breadcrumbSeparator {
+  color: $color-sand-400;
+  font-size: 1.1rem;
+}
+
+.breadcrumbCurrent {
+  color: $color-text-700;
+}
+
+.backBtnLink {
+  text-decoration: none;
+}
+
+.detailCard {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 3.5rem;
+  align-items: start;
+  background-color: $color-cream-50;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.portraitColumn {
+  width: 100%;
+}
+
+.portraitWrapper {
+  width: 100%;
+  max-height: 480px;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  background-color: $color-cream-100;
+  border: 1px solid $color-sand-300;
+  box-shadow: $shadow-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portraitImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.2) contrast(1.05);
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.philosopherName {
+  font-family: $font-serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 600;
+  color: $color-forest-900;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+}
+
+.textSection {
+  margin-bottom: 2rem;
+}
+
+.sectionHeading {
+  font-family: $font-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: $color-forest-900;
+  margin-bottom: 0.5rem;
+}
+
+.sectionParagraph {
+  font-family: $font-sans;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: $color-text-700;
+}
+
+.tagsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  font-family: $font-sans;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: $color-forest-900;
+  background-color: $color-cream-200;
+  border: 1px solid $color-sand-300;
+  padding: 0.25rem 0.75rem;
+  border-radius: $radius-full;
+}
+
+// Not found state
+.notFoundContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.5rem;
+}
+
+.notFoundTitle {
+  font-family: $font-serif;
+  font-size: 2.25rem;
+  color: $color-forest-900;
+  margin-bottom: 1rem;
+}
+
+.notFoundText {
+  font-size: 1.05rem;
+  color: $color-text-700;
+  margin-bottom: 2rem;
+  max-width: 480px;
+}
+
