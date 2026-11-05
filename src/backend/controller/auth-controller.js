@@ -118,10 +118,14 @@ const loginAccount = async (req, res) => {
 
     await saveToken(account.id, refreshToken);
 
+    const isProduction = process.env.NODE_ENV === 'production';
+    const cookieSameSite =
+      process.env.COOKIE_SAME_SITE || (isProduction ? 'none' : 'strict');
+
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      secure: isProduction,
+      sameSite: cookieSameSite,
       path: '/',
     });
 
@@ -164,10 +168,14 @@ const logoutAccount = async (req, res) => {
       });
     }
 
+    const isProduction = process.env.NODE_ENV === 'production';
+    const cookieSameSite =
+      process.env.COOKIE_SAME_SITE || (isProduction ? 'none' : 'strict');
+
     res.clearCookie('refreshToken', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      secure: isProduction,
+      sameSite: cookieSameSite,
       path: '/',
     });
 

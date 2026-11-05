@@ -4,12 +4,14 @@
 
 # Node
 node_modules
+dist
+src/frontend/dist
+
+# Env files
+.env
+.env.local
+src/frontend/.env
+src/frontend/.env.local
 
 # MacOS
 .DS_Store
-
-# Senha do banco
-.env
-
-# Descrição do Projeto
-.prd.md
