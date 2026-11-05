@@ -10,5 +10,6 @@ node_modules
 
 # Senha do banco
 .env
-.env.*
-!.env.example
+
+# Descrição do Projeto
+.prd.md
