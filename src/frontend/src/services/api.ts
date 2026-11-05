@@ -184,9 +184,12 @@ export const api = {
     }),
 
   activate: (token: string) =>
-    request<{ message: string }>(`/activate/${token}`, {
-      method: 'GET',
-    }),
+    request<{ message: string; alreadyActive?: boolean; status?: string }>(
+      `/activate/${token}`,
+      {
+        method: 'GET',
+      },
+    ),
 
   login: (body: { email: string; password: string }) =>
     request<{

@@ -42,10 +42,9 @@ const createUser = async (user) => {
     try {
       await data.destroy();
     } catch (deleteError) {
-      throw new Error(
-        'Erro ao excluir usuário após falha no envio do email:',
-        deleteError,
-      );
+      throw new Error('Erro ao excluir usuário após falha no envio do email:', {
+        cause: deleteError,
+      });
     }
 
     throw new Error('Houve um erro ao enviar o email de ativação de conta.');
@@ -55,6 +54,13 @@ const createUser = async (user) => {
 };
 
 const activateUser = async (user) => {
+  if (!user || !user.token) {
+    const error = new Error('Token de ativação não informado');
+
+    error.code = 'TOKEN_AUSENTE';
+    throw error;
+  }
+
   const userInformations = await User.findOne({
     where: {
       token: user.token,
@@ -62,18 +68,36 @@ const activateUser = async (user) => {
   });
 
   if (userInformations === null) {
-    return null;
+    const error = new Error('Token de ativação inválido ou não encontrado');
+
+    error.code = 'TOKEN_INVALIDO';
+    throw error;
   }
 
-  if (userInformations.isUsed === true) {
-    return null;
+  // Idempotência: se a conta já foi ativada com sucesso pelo token
+  if (userInformations.isActive === true && userInformations.isUsed === true) {
+    return {
+      user: userInformations,
+      alreadyActive: true,
+    };
+  }
+
+  // Token marcado como utilizado, mas com conta inativa: inconsistente/inválido
+  if (userInformations.isUsed === true && !userInformations.isActive) {
+    const error = new Error('Token de ativação já utilizado ou inválido');
+
+    error.code = 'TOKEN_JA_UTILIZADO';
+    throw error;
   }
 
   const time = new Date().getTime();
   const expiresAt = new Date(userInformations.expiresAt).getTime();
 
   if (time > expiresAt) {
-    return null;
+    const error = new Error('O link de ativação expirou');
+
+    error.code = 'TOKEN_EXPIRADO';
+    throw error;
   }
 
   const userActivate = await userInformations.update({
@@ -81,7 +105,10 @@ const activateUser = async (user) => {
     isUsed: true,
   });
 
-  return userActivate;
+  return {
+    user: userActivate,
+    alreadyActive: false,
+  };
 };
 
 const loginUser = async (user) => {
