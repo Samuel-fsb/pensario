@@ -1,0 +1,85 @@
+@use '../../styles/variables.scss' as *;
+
+.pageContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-cream-50;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem 10rem;
+  z-index: 2;
+
+  @media (max-width: 600px) {
+    padding: 2rem 1rem 8rem;
+    align-items: flex-start;
+  }
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.iconWrapper {
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-family: $font-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: $color-forest-900;
+  margin-bottom: 0.75rem;
+
+  @media (max-width: 600px) {
+    font-size: 1.75rem;
+  }
+}
+
+.subtitle {
+  font-family: $font-sans;
+  font-size: 1rem;
+  color: $color-text-700;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  max-width: 380px;
+}
+
+.bodyContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottomLandscape {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  background-image: url('/assets/bottom-mountains.png');
+  background-repeat: repeat-x;
+  background-position: bottom center;
+  background-size: contain;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 1;
+
+  @media (max-width: 600px) {
+    height: 90px;
+  }
+}
+

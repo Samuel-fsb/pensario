@@ -1,0 +1,97 @@
+@use '../../styles/variables.scss' as *;
+
+.formHeader {
+  margin-bottom: 2rem;
+}
+
+.formTitle {
+  font-family: $font-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: $color-forest-900;
+  margin-bottom: 0.5rem;
+}
+
+.formSubtitle {
+  font-family: $font-sans;
+  font-size: 0.95rem;
+  color: $color-text-700;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.passwordFieldWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.forgotPasswordWrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.forgotPasswordLink {
+  font-family: $font-sans;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $color-forest-900;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-gold-600;
+  }
+}
+
+.submitButton {
+  margin-top: 0.75rem;
+}
+
+.switchAuthText {
+  text-align: center;
+  font-family: $font-sans;
+  font-size: 0.9rem;
+  color: $color-text-700;
+  margin-top: 1rem;
+}
+
+.switchAuthLink {
+  color: $color-forest-900;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-gold-600;
+  }
+}
+
+.alertError {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  background-color: $color-error-bg;
+  border: 1px solid rgba(197, 61, 61, 0.3);
+  border-radius: $radius-md;
+  color: $color-error;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.alertSuccess {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  background-color: $color-success-bg;
+  border: 1px solid rgba(46, 125, 50, 0.3);
+  border-radius: $radius-md;
+  color: $color-success;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+

@@ -1,0 +1,122 @@
+@use '../../styles/variables.scss' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-sans;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: $radius-md;
+  transition: all $transition-fast;
+  white-space: nowrap;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  // Sizes
+  &.sm {
+    padding: 0.375rem 0.875rem;
+    font-size: 0.875rem;
+    border-radius: $radius-sm;
+  }
+
+  &.md {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  &.lg {
+    padding: 0.875rem 1.75rem;
+    font-size: 1.05rem;
+    border-radius: $radius-lg;
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  // Variants
+  &.primary {
+    background-color: $color-gold-500;
+    color: $color-forest-900;
+    font-weight: 600;
+
+    &:hover:not(:disabled) {
+      background-color: $color-gold-600;
+      box-shadow: $shadow-sm;
+    }
+  }
+
+  &.outline {
+    background-color: transparent;
+    border-color: $color-sand-300;
+    color: $color-forest-900;
+
+    &:hover:not(:disabled) {
+      border-color: $color-forest-900;
+      background-color: rgba(29, 59, 48, 0.04);
+    }
+  }
+
+  &.secondary {
+    background-color: $color-cream-100;
+    color: $color-forest-900;
+    border-color: $color-sand-300;
+
+    &:hover:not(:disabled) {
+      background-color: $color-cream-200;
+    }
+  }
+
+  &.ghost {
+    background-color: transparent;
+    color: $color-forest-900;
+
+    &:hover:not(:disabled) {
+      background-color: rgba(29, 59, 48, 0.06);
+    }
+  }
+
+  &.danger {
+    background-color: transparent;
+    color: $color-error;
+    border-color: rgba(197, 61, 61, 0.3);
+
+    &:hover:not(:disabled) {
+      background-color: $color-error-bg;
+      border-color: $color-error;
+    }
+  }
+}
+
+.spinnerWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

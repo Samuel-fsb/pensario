@@ -1,0 +1,86 @@
+@use '../../styles/variables.scss' as *;
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  border-radius: $radius-sm;
+
+  &:focus-visible {
+    outline: 2px solid $color-gold-500;
+  }
+}
+
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 0.95;
+  }
+
+  &.stacked {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.875rem;
+  }
+
+  &.light {
+    .text {
+      color: $color-cream-50;
+    }
+  }
+
+  &.dark {
+    .text {
+      color: $color-forest-900;
+    }
+  }
+
+  &.sm {
+    .icon {
+      width: 28px;
+      height: 22px;
+    }
+    .text {
+      font-size: 1.15rem;
+    }
+  }
+
+  &.md {
+    .icon {
+      width: 38px;
+      height: 28px;
+    }
+    .text {
+      font-size: 1.35rem;
+    }
+  }
+
+  &.lg {
+    .icon {
+      width: 64px;
+      height: 48px;
+    }
+    .text {
+      font-size: 1.85rem;
+    }
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+.text {
+  font-family: $font-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+

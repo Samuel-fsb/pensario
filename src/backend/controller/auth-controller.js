@@ -83,17 +83,48 @@ const createAccount = async (req, res) => {
 const activateAccount = async (req, res) => {
   try {
     const { token } = req.params;
-    const tokenActivation = await activateUser({ token });
 
-    if (!tokenActivation) {
-      return res.status(400).end();
+    if (!token) {
+      return res.status(400).json({
+        status: 'erro',
+        code: 'TOKEN_AUSENTE',
+        message: 'Token de ativação não informado',
+      });
+    }
+
+    const activationResult = await activateUser({ token });
+
+    if (activationResult.alreadyActive) {
+      return res.status(200).json({
+        status: 'sucesso',
+        message:
+          'Esta conta já estava ativada. Você já pode entrar no Pensário.',
+        alreadyActive: true,
+      });
     }
 
     return res.status(200).json({
-      message: 'Usuário ativado',
+      status: 'sucesso',
+      message: 'Conta ativada com sucesso!',
+      alreadyActive: false,
     });
   } catch (error) {
-    res.status(500).json({
+    if (
+      error.code === 'TOKEN_INVALIDO' ||
+      error.code === 'TOKEN_EXPIRADO' ||
+      error.code === 'TOKEN_JA_UTILIZADO' ||
+      error.code === 'TOKEN_AUSENTE'
+    ) {
+      return res.status(400).json({
+        status: 'erro',
+        code: error.code,
+        message: error.message,
+      });
+    }
+
+    return res.status(500).json({
+      status: 'erro',
+      code: 'ERRO_INTERNO',
       message: 'Aconteceu um erro ao ativar a conta',
     });
   }
@@ -118,10 +149,14 @@ const loginAccount = async (req, res) => {
 
     await saveToken(account.id, refreshToken);
 
+    const isProduction = process.env.NODE_ENV === 'production';
+    const cookieSameSite =
+      process.env.COOKIE_SAME_SITE || (isProduction ? 'none' : 'strict');
+
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      secure: isProduction,
+      sameSite: cookieSameSite,
       path: '/',
     });
 
@@ -164,10 +199,14 @@ const logoutAccount = async (req, res) => {
       });
     }
 
+    const isProduction = process.env.NODE_ENV === 'production';
+    const cookieSameSite =
+      process.env.COOKIE_SAME_SITE || (isProduction ? 'none' : 'strict');
+
     res.clearCookie('refreshToken', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      secure: isProduction,
+      sameSite: cookieSameSite,
       path: '/',
     });
 

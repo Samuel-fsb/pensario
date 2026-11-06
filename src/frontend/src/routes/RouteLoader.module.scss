@@ -1,0 +1,34 @@
+@use '../styles/variables.scss' as *;
+
+.loadingContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-cream-50;
+  gap: 1.5rem;
+
+  p {
+    font-family: $font-serif;
+    color: $color-forest-900;
+    font-size: 1.125rem;
+    font-style: italic;
+  }
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid $color-sand-300;
+  border-top-color: $color-gold-500;
+  border-radius: 50%;
+  animation: spin 0.9s cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
