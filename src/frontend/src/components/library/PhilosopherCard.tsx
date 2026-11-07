@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight } from '@phosphor-icons/react';
 import { Philosopher } from '../../types/philosopher';
-import { Button } from '../common/Button';
 import styles from './PhilosopherCard.module.scss';
 
 interface PhilosopherCardProps {
@@ -17,6 +17,7 @@ export const PhilosopherCard: React.FC<PhilosopherCardProps> = ({
         to={`/filosofos/${philosopher.slug}`}
         className={styles.imageLink}
         tabIndex={-1}
+        aria-hidden="true"
       >
         <div className={styles.portraitWrapper}>
           <img
@@ -38,18 +39,20 @@ export const PhilosopherCard: React.FC<PhilosopherCardProps> = ({
           </Link>
         </h3>
 
-        <p className={styles.shortDescription}>
-          {philosopher.shortDescription}
+        <p className={styles.tagline}>{philosopher.shortDescription}</p>
+
+        <p className={styles.bio}>
+          {philosopher.whoWas.length > 160
+            ? philosopher.whoWas.slice(0, 157) + '…'
+            : philosopher.whoWas}
         </p>
 
         <div className={styles.action}>
           <Link
             to={`/filosofos/${philosopher.slug}`}
-            className={styles.buttonLink}
+            className={styles.ctaLink}
           >
-            <Button variant="outline" size="sm" fullWidth>
-              Ver resumo →
-            </Button>
+            Ver resumo <ArrowRight size={15} weight="bold" />
           </Link>
         </div>
       </div>

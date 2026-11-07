@@ -35,14 +35,13 @@ export const PhilosopherDetailPage: React.FC = () => {
   }
 
   // Se for Sócrates, podemos usar a imagem ampliada de alta fidelidade
-  const portraitSrc =
-    philosopher.slug === 'socrates'
-      ? '/assets/philosophers/socrates-large.png'
-      : philosopher.portrait;
+  const portraitSrc = philosopher.portrait;
 
   return (
     <div className={styles.pageContainer}>
       <Navbar />
+
+      <div className={styles.navOffset} />
 
       <main className={styles.mainContent}>
         {/* Top Header Bar: Breadcrumb + Back Button */}

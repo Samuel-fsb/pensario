@@ -7,6 +7,11 @@
   background-color: $color-cream-50;
 }
 
+.navOffset {
+  height: 65px;
+  flex-shrink: 0;
+}
+
 .mainContent {
   flex: 1;
   max-width: 1200px;

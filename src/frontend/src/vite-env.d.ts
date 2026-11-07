@@ -10,6 +10,8 @@ declare module '*.module.css' {
   export default classes;
 }
 
+declare module '@phosphor-icons/react';
+
 interface ImportMetaEnv {
   readonly VITE_API_URL?: string;
 }

@@ -1,16 +1,27 @@
 @use '../../styles/variables.scss' as *;
 
 .header {
-  position: relative;
-  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
   width: 100%;
   background-color: $color-forest-900;
   color: $color-cream-50;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 
   &.transparent {
-    background-color: rgba(29, 59, 48, 0.95);
-    backdrop-filter: blur(8px);
+    background-color: rgba(29, 59, 48, 0.72);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &.scrolled {
+    background-color: $color-forest-900;
+    backdrop-filter: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
   }
 }
 
@@ -57,6 +68,23 @@
   }
 
   &.active {
+    color: $color-cream-50;
+    font-weight: 600;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $color-gold-500;
+      border-radius: $radius-full;
+    }
+  }
+
+  // Used for anchor section links (Sobre) that are manually set active
+  &.sectionActive {
     color: $color-cream-50;
     font-weight: 600;
 

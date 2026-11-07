@@ -7,12 +7,75 @@
   background-color: $color-cream-50;
 }
 
+// Fixed navbar offset for non-transparent pages
+.navOffset {
+  height: 65px;
+  flex-shrink: 0;
+}
+
+.heroBanner {
+  position: relative;
+  width: 100%;
+  min-height: 260px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    min-height: 180px;
+  }
+}
+
+.heroBannerBg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/hero-landscape.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  filter: brightness(0.72) saturate(0.9);
+}
+
+.heroBannerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 39, 32, 0.15) 0%,
+    rgba(20, 39, 32, 0.6) 70%,
+    rgba(20, 39, 32, 0.85) 100%
+  );
+}
+
+.heroBannerContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  padding: 2.5rem 2rem 3rem;
+}
+
+.title {
+  font-family: $font-serif;
+  font-size: clamp(2rem, 3.5vw, 2.9rem);
+  font-weight: 700;
+  color: $color-cream-50;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+  font-family: $font-sans;
+  font-size: 1.05rem;
+  color: rgba(255, 248, 234, 0.85);
+  margin-bottom: 0;
+}
+
 .mainContent {
   flex: 1;
   max-width: 1300px;
   width: 100%;
   margin: 0 auto;
-  padding: 3rem 2rem 5rem;
+  padding: 2.5rem 2rem 5rem;
 
   @media (max-width: 768px) {
     padding: 2rem 1.25rem 4rem;
@@ -24,22 +87,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: 3rem;
-}
-
-.title {
-  font-family: $font-serif;
-  font-size: clamp(2rem, 3.5vw, 2.75rem);
-  font-weight: 600;
-  color: $color-forest-900;
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  font-family: $font-sans;
-  font-size: 1.05rem;
-  color: $color-text-700;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .searchWrapper {

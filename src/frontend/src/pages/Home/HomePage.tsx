@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, BookOpen, Compass, Sparkle } from '@phosphor-icons/react';
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BookOpen,
+  Compass,
+  Sparkle,
+} from '@phosphor-icons/react';
 import { Navbar } from '../../components/layout/Navbar';
 import { Button } from '../../components/common/Button';
 import { PensarioLogo } from '../../components/common/PensarioLogo';
@@ -46,6 +52,7 @@ export const HomePage: React.FC = () => {
               size="lg"
               onClick={handleExplore}
               rightIcon={<ArrowRight size={20} weight="bold" />}
+              className={styles.heroPrimaryBtn}
             >
               Explorar biblioteca
             </Button>
@@ -63,13 +70,25 @@ export const HomePage: React.FC = () => {
             )}
           </div>
         </div>
+
+        {/* Link do Portfólio no final da seção de início */}
+        <div className={styles.portfolioLinkWrapper}>
+          <a
+            href="https://portfolio-samuel-bezerra.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.portfolioLink}
+          >
+            <span>Conheça meu portfólio • Samuel Bezerra</span>
+            <ArrowUpRight size={16} weight="bold" />
+          </a>
+        </div>
       </section>
 
       {/* Seção Sobre (PRD 5.1 / 5.2) */}
       <section id="sobre" className={styles.aboutSection}>
         <div className={styles.aboutContainer}>
           <div className={styles.aboutHeader}>
-            <span className={styles.aboutBadge}>Sobre o Pensário</span>
             <h2 className={styles.aboutTitle}>
               Uma pausa contemplativa para o pensamento
             </h2>
@@ -83,9 +102,6 @@ export const HomePage: React.FC = () => {
 
           <div className={styles.featureGrid}>
             <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>
-                <BookOpen size={28} weight="duotone" />
-              </div>
               <h3 className={styles.featureTitle}>Resumos Essenciais</h3>
               <p className={styles.featureDesc}>
                 Textos concisos e contextualizados que explicam quem foram os
@@ -95,9 +111,6 @@ export const HomePage: React.FC = () => {
             </div>
 
             <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>
-                <Compass size={28} weight="duotone" />
-              </div>
               <h3 className={styles.featureTitle}>Jornada Autêntica</h3>
               <p className={styles.featureDesc}>
                 Navegação sem ruídos ou algoritmos opacos: explore livremente os
@@ -106,9 +119,6 @@ export const HomePage: React.FC = () => {
             </div>
 
             <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>
-                <Sparkle size={28} weight="duotone" />
-              </div>
               <h3 className={styles.featureTitle}>Experiência Editorial</h3>
               <p className={styles.featureDesc}>
                 Design refinado e atmosfera contemplativa, concebido para uma

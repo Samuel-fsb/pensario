@@ -35,13 +35,23 @@ export const LibraryPage: React.FC = () => {
     <div className={styles.libraryContainer}>
       <Navbar />
 
-      <main className={styles.mainContent}>
-        <div className={styles.contentHeader}>
+      {/* Fixed navbar offset */}
+      <div className={styles.navOffset} />
+
+      {/* Hero banner with landscape background */}
+      <div className={styles.heroBanner}>
+        <div className={styles.heroBannerBg} />
+        <div className={styles.heroBannerOverlay} />
+        <div className={styles.heroBannerContent}>
           <h1 className={styles.title}>Sua biblioteca de ideias</h1>
           <p className={styles.subtitle}>
             Escolha um pensador para começar a explorar.
           </p>
+        </div>
+      </div>
 
+      <main className={styles.mainContent}>
+        <div className={styles.contentHeader}>
           {/* Search bar */}
           <div className={styles.searchWrapper}>
             <label htmlFor="search-input" className={styles.srOnly}>
@@ -83,8 +93,8 @@ export const LibraryPage: React.FC = () => {
           ) : (
             <div className={styles.emptyState}>
               <p className={styles.emptyText}>
-                Nenhum pensador ou conceito encontrado para “
-                <strong>{searchTerm}</strong>”.
+                Nenhum pensador ou conceito encontrado para "
+                <strong>{searchTerm}</strong>".
               </p>
               <Button
                 variant="outline"

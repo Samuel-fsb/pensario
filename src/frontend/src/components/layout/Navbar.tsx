@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { NavLink, Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
 import { SignOut, List, X } from '@phosphor-icons/react';
 import { PensarioLogo } from '../common/PensarioLogo';
 import { Button } from '../common/Button';
@@ -13,7 +13,35 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ transparent = false }) => {
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [sobreInView, setSobreInView] = useState(false);
+
+  // Track scroll position to change navbar background after scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 60);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Track whether #sobre section is in viewport using IntersectionObserver
+  useEffect(() => {
+    const sobreEl = document.getElementById('sobre');
+    if (!sobreEl) {
+      setSobreInView(false);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => setSobreInView(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    observer.observe(sobreEl);
+    return () => observer.disconnect();
+  }, [location.pathname]);
 
   const handleLogout = async () => {
     await logout();
@@ -24,10 +52,33 @@ export const Navbar: React.FC<NavbarProps> = ({ transparent = false }) => {
     setMobileMenuOpen(false);
   };
 
+  // Smooth scroll to section anchor, handling cross-page navigation
+  const handleSectionLink = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
+    e.preventDefault();
+    closeMobileMenu();
+    if (location.pathname === '/') {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate(`/#${sectionId}`);
+    }
+  };
+
+  const headerClass = [
+    styles.header,
+    transparent && !scrolled ? styles.transparent : '',
+    scrolled ? styles.scrolled : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   return (
-    <header
-      className={`${styles.header} ${transparent ? styles.transparent : ''}`}
-    >
+    <header className={headerClass}>
       <div className={styles.inner}>
         {/* Brand / Logo */}
         <div className={styles.brand}>
@@ -65,7 +116,11 @@ export const Navbar: React.FC<NavbarProps> = ({ transparent = false }) => {
               Perfil
             </NavLink>
           ) : (
-            <a href="/#sobre" className={styles.navLink}>
+            <a
+              href="/#sobre"
+              onClick={(e) => handleSectionLink(e, 'sobre')}
+              className={`${styles.navLink} ${sobreInView ? styles.sectionActive : ''}`}
+            >
               Sobre
             </a>
           )}
@@ -134,7 +189,7 @@ export const Navbar: React.FC<NavbarProps> = ({ transparent = false }) => {
             ) : (
               <a
                 href="/#sobre"
-                onClick={closeMobileMenu}
+                onClick={(e) => handleSectionLink(e, 'sobre')}
                 className={styles.mobileNavLink}
               >
                 Sobre

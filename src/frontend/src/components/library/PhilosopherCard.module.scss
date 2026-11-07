@@ -10,9 +10,9 @@
   transition: transform $transition-fast, box-shadow $transition-fast, border-color $transition-fast;
 
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
     box-shadow: $shadow-md;
-    border-color: $color-sand-400;
+    border-color: rgba(231, 170, 50, 0.4);
   }
 }
 
@@ -23,11 +23,8 @@
 
 .portraitWrapper {
   width: 100%;
-  height: 180px;
+  aspect-ratio: 4 / 3;
   background-color: $color-cream-100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
   border-bottom: 1px solid rgba(220, 203, 170, 0.4);
 }
@@ -37,16 +34,16 @@
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  filter: sepia(0.2) contrast(1.05);
+  filter: sepia(0.15) contrast(1.05);
   transition: transform $transition-normal;
 
   .card:hover & {
-    transform: scale(1.03);
+    transform: scale(1.04);
   }
 }
 
 .content {
-  padding: 1.25rem 1rem 1rem;
+  padding: 1.4rem 1.25rem 1.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,10 +53,10 @@
 
 .name {
   font-family: $font-serif;
-  font-size: 1.35rem;
-  font-weight: 600;
+  font-size: 1.45rem;
+  font-weight: 700;
   color: $color-forest-900;
-  margin-bottom: 0.375rem;
+  margin-bottom: 0.3rem;
 }
 
 .nameLink {
@@ -71,21 +68,47 @@
   }
 }
 
-.shortDescription {
+.tagline {
+  font-family: $font-serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: $color-gold-700;
+  margin-bottom: 0.9rem;
+}
+
+.bio {
   font-family: $font-sans;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   color: $color-text-700;
-  margin-bottom: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 1.4rem;
   flex: 1;
 }
 
 .action {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.buttonLink {
-  display: block;
-  width: 100%;
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: $font-sans;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: $color-forest-900;
   text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  border: 1.5px solid $color-sand-300;
+  border-radius: $radius-full;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $color-gold-500;
+    color: $color-gold-700;
+    background-color: rgba(247, 186, 30, 0.08);
+  }
 }
 
