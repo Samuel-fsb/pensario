@@ -21,6 +21,21 @@ const {
   verifyRefreshToken,
 } = require('../services/jwt-service');
 
+const getRefreshCookieOptions = () => {
+  const isProduction =
+    process.env.VERCEL_ENV === 'production' ||
+    process.env.NODE_ENV === 'production';
+
+  return {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction
+      ? 'none'
+      : process.env.COOKIE_SAME_SITE || 'strict',
+    path: '/',
+  };
+};
+
 const createAccount = async (req, res) => {
   try {
     const { email, name, password } = req.body;
@@ -149,16 +164,7 @@ const loginAccount = async (req, res) => {
 
     await saveToken(account.id, refreshToken);
 
-    const isProduction = process.env.NODE_ENV === 'production';
-    const cookieSameSite =
-      process.env.COOKIE_SAME_SITE || (isProduction ? 'none' : 'strict');
-
-    res.cookie('refreshToken', refreshToken, {
-      httpOnly: true,
-      secure: isProduction,
-      sameSite: cookieSameSite,
-      path: '/',
-    });
+    res.cookie('refreshToken', refreshToken, getRefreshCookieOptions());
 
     return res.status(200).json({
       accessToken,
@@ -199,16 +205,7 @@ const logoutAccount = async (req, res) => {
       });
     }
 
-    const isProduction = process.env.NODE_ENV === 'production';
-    const cookieSameSite =
-      process.env.COOKIE_SAME_SITE || (isProduction ? 'none' : 'strict');
-
-    res.clearCookie('refreshToken', {
-      httpOnly: true,
-      secure: isProduction,
-      sameSite: cookieSameSite,
-      path: '/',
-    });
+    res.clearCookie('refreshToken', getRefreshCookieOptions());
 
     return res.status(200).json({ message: 'Você saiu da conta com sucesso!' });
   } catch (error) {

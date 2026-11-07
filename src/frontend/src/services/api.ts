@@ -2,7 +2,13 @@
  * Cliente HTTP centralizado para a API do Pensário
  */
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const DEFAULT_API_URL = import.meta.env.PROD
+  ? 'https://pensario-api.vercel.app'
+  : 'http://localhost:3000';
+
+const API_URL = (
+  import.meta.env.VITE_API_URL?.trim() || DEFAULT_API_URL
+).replace(/\/+$/, '');
 
 interface RequestOptions extends RequestInit {
   token?: string | null;

@@ -1,6 +1,7 @@
 'use strict';
 
 require('dotenv').config();
+
 const pg = require('pg');
 
 const { Sequelize } = require('sequelize');
