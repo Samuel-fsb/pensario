@@ -34,7 +34,8 @@ const createServer = () => {
       .filter(Boolean),
   );
 
-  // CORS vem antes dos parsers para responder corretamente às requisições OPTIONS.
+  // CORS vem antes dos parsers para responder
+  // corretamente às requisições OPTIONS.
   server.use(
     cors({
       origin: (origin, callback) => {

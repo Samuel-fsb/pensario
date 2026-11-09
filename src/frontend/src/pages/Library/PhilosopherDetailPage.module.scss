@@ -106,73 +106,11 @@
   }
 }
 
-.cardContent {
-  display: grid;
-  grid-template-columns: 460px 1fr;
-  gap: 3.5rem;
-  align-items: start;
-
-  @media (max-width: 1050px) {
-    grid-template-columns: 380px 1fr;
-    gap: 2.5rem;
-  }
-
-  @media (max-width: 860px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
-.portraitColumn {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-// Animação de crescimento e ampliação do retrato ao carregar a página
-@keyframes portraitGrow {
-  0% {
-    transform: scale(0.88);
-    opacity: 0.6;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.portraitWrapper {
-  width: 100%;
-  max-width: 480px;
-  border-radius: $radius-xl;
-  overflow: hidden;
-  background-color: $color-cream-100;
-  border: 1px solid rgba(220, 203, 170, 0.7);
-  box-shadow: 0 8px 28px rgba(20, 39, 32, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: portraitGrow 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-
-  &:hover {
-    transform: scale(1.02);
-    box-shadow: 0 12px 36px rgba(20, 39, 32, 0.15);
-  }
-}
-
-.portraitImage {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 768 / 496;
-  object-fit: cover;
-  filter: sepia(0.12) contrast(1.06);
-  display: block;
-}
-
-.textColumn {
+.textContent {
   display: flex;
   flex-direction: column;
+  text-align: left;
+  width: 100%;
 }
 
 .philosopherName {
@@ -180,34 +118,39 @@
   font-size: clamp(2.3rem, 3.8vw, 3.2rem);
   font-weight: 700;
   color: $color-forest-900;
-  margin-bottom: 1.75rem;
-  line-height: 1.1;
+  margin-bottom: 2rem;
+  line-height: 1.15;
+  text-align: left;
 }
 
 .textSection {
-  margin-bottom: 1.75rem;
+  margin-bottom: 2.25rem;
+  text-align: left;
 }
 
 .sectionHeading {
   font-family: $font-serif;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: $color-forest-900;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.6rem;
+  text-align: left;
 }
 
 .sectionParagraph {
   font-family: $font-sans;
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 1.05rem;
+  line-height: 1.8;
   color: $color-text-700;
+  text-align: left;
 }
 
 .tagsWrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
+  justify-content: flex-start;
 }
 
 .tag {

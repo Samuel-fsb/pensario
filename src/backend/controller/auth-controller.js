@@ -29,9 +29,7 @@ const getRefreshCookieOptions = () => {
   return {
     httpOnly: true,
     secure: isProduction,
-    sameSite: isProduction
-      ? 'none'
-      : process.env.COOKIE_SAME_SITE || 'strict',
+    sameSite: isProduction ? 'none' : process.env.COOKIE_SAME_SITE || 'strict',
     path: '/',
   };
 };

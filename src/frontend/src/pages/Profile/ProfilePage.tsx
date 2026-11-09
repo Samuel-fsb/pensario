@@ -163,6 +163,8 @@ export const ProfilePage: React.FC = () => {
     <div className={styles.profilePage}>
       <Navbar />
 
+      <div className={styles.navOffset} />
+
       <main className={styles.mainContent}>
         <div className={styles.container}>
           <h1 className={styles.pageTitle}>Meu perfil</h1>

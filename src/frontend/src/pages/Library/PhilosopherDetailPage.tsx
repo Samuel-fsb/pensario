@@ -34,9 +34,6 @@ export const PhilosopherDetailPage: React.FC = () => {
     );
   }
 
-  // Se for Sócrates, podemos usar a imagem ampliada de alta fidelidade
-  const portraitSrc = philosopher.portrait;
-
   return (
     <div className={styles.pageContainer}>
       <Navbar />
@@ -79,54 +76,36 @@ export const PhilosopherDetailPage: React.FC = () => {
             </Link>
           </div>
 
-          {/* Two-column Detail Content with Large Portrait */}
-          <div className={styles.cardContent}>
-            {/* Left Column: Large Portrait Image */}
-            <div className={styles.portraitColumn}>
-              <div className={styles.portraitWrapper}>
-                <img
-                  src={portraitSrc}
-                  alt={`Retrato ilustrado de ${philosopher.name}`}
-                  className={styles.portraitImage}
-                />
+          {/* Left-aligned Editorial Content */}
+          <div className={styles.textContent}>
+            <h1 className={styles.philosopherName}>{philosopher.name}</h1>
+
+            <section className={styles.textSection}>
+              <h2 className={styles.sectionHeading}>Quem foi</h2>
+              <p className={styles.sectionParagraph}>{philosopher.whoWas}</p>
+            </section>
+
+            <section className={styles.textSection}>
+              <h2 className={styles.sectionHeading}>Principais ideias</h2>
+              <p className={styles.sectionParagraph}>{philosopher.mainIdeas}</p>
+            </section>
+
+            <section className={styles.textSection}>
+              <h2 className={styles.sectionHeading}>Por que ainda importa?</h2>
+              <p className={styles.sectionParagraph}>
+                {philosopher.whyItMatters}
+              </p>
+            </section>
+
+            {philosopher.tags && (
+              <div className={styles.tagsWrapper}>
+                {philosopher.tags.map((tag) => (
+                  <span key={tag} className={styles.tag}>
+                    {tag}
+                  </span>
+                ))}
               </div>
-            </div>
-
-            {/* Right Column: Editorial Text */}
-            <div className={styles.textColumn}>
-              <h1 className={styles.philosopherName}>{philosopher.name}</h1>
-
-              <section className={styles.textSection}>
-                <h2 className={styles.sectionHeading}>Quem foi</h2>
-                <p className={styles.sectionParagraph}>{philosopher.whoWas}</p>
-              </section>
-
-              <section className={styles.textSection}>
-                <h2 className={styles.sectionHeading}>Principais ideias</h2>
-                <p className={styles.sectionParagraph}>
-                  {philosopher.mainIdeas}
-                </p>
-              </section>
-
-              <section className={styles.textSection}>
-                <h2 className={styles.sectionHeading}>
-                  Por que ainda importa?
-                </h2>
-                <p className={styles.sectionParagraph}>
-                  {philosopher.whyItMatters}
-                </p>
-              </section>
-
-              {philosopher.tags && (
-                <div className={styles.tagsWrapper}>
-                  {philosopher.tags.map((tag) => (
-                    <span key={tag} className={styles.tag}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
+            )}
           </div>
         </article>
       </main>
