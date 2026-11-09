@@ -1,12 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  ArrowRight,
-  ArrowUpRight,
-  BookOpen,
-  Compass,
-  Sparkle,
-} from '@phosphor-icons/react';
+import { ArrowRight, ArrowUpRight } from '@phosphor-icons/react';
 import { Navbar } from '../../components/layout/Navbar';
 import { Button } from '../../components/common/Button';
 import { PensarioLogo } from '../../components/common/PensarioLogo';

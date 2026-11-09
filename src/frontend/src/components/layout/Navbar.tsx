@@ -23,23 +23,30 @@ export const Navbar: React.FC<NavbarProps> = ({ transparent = false }) => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 60);
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Track whether #sobre section is in viewport using IntersectionObserver
   useEffect(() => {
     const sobreEl = document.getElementById('sobre');
+
     if (!sobreEl) {
       setSobreInView(false);
+
       return;
     }
+
     const observer = new IntersectionObserver(
       ([entry]) => setSobreInView(entry.isIntersecting),
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
+
     observer.observe(sobreEl);
+
     return () => observer.disconnect();
   }, [location.pathname]);
 
@@ -55,12 +62,14 @@ export const Navbar: React.FC<NavbarProps> = ({ transparent = false }) => {
   // Smooth scroll to section anchor, handling cross-page navigation
   const handleSectionLink = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    sectionId: string
+    sectionId: string,
   ) => {
     e.preventDefault();
     closeMobileMenu();
+
     if (location.pathname === '/') {
       const el = document.getElementById(sectionId);
+
       if (el) {
         el.scrollIntoView({ behavior: 'smooth' });
       }
