@@ -96,16 +96,6 @@ export const PhilosopherDetailPage: React.FC = () => {
                 {philosopher.whyItMatters}
               </p>
             </section>
-
-            {philosopher.tags && (
-              <div className={styles.tagsWrapper}>
-                {philosopher.tags.map((tag) => (
-                  <span key={tag} className={styles.tag}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
           </div>
         </article>
       </main>

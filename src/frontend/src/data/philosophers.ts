@@ -23,14 +23,7 @@ export const PHILOSOPHERS: Philosopher[] = [
       'com conhecimento. Seu modo de investigar ajuda a identificar ' +
       'contradições, avaliar argumentos e rever opiniões diante de boas ' +
       'razões. Seu legado é um ideal de coragem intelectual: continuar ' +
-      'buscando a verdade mesmo quando isso é desconfortável.',
-    tags: [
-      'Ética',
-      'Autoconhecimento',
-      'Maiêutica',
-      'Grécia Antiga',
-      'Virtude',
-    ],
+      'buscando a verdade mesmo quando isso é desconfortável.'
   },
   {
     slug: 'platao',
@@ -53,8 +46,7 @@ export const PHILOSOPHERS: Philosopher[] = [
       'a relação entre aparência e realidade, conhecimento e opinião, ' +
       'indivíduo e sociedade. Seus diálogos mostram que problemas filosóficos ' +
       'importantes raramente se resolvem com respostas rápidas; exigem ' +
-      'argumentação, imaginação e disposição para rever as próprias ideias.',
-    tags: ['Formas', 'Alegoria da Caverna', 'Justiça', 'Conhecimento', 'Alma'],
+      'argumentação, imaginação e disposição para rever as próprias ideias.'
   },
   {
     slug: 'aristoteles',
@@ -77,8 +69,7 @@ export const PHILOSOPHERS: Philosopher[] = [
       'ética mostra que caráter não se constrói apenas com boas intenções: ' +
       'depende de hábitos, escolhas repetidas e julgamento adequado. Suas ' +
       'reflexões sobre política, linguagem e arte seguem presentes em debates ' +
-      'contemporâneos.',
-    tags: ['Lógica', 'Eudaimonia', 'Virtude', 'Empirismo', 'Metafísica'],
+      'contemporâneos.'
   },
   {
     slug: 'nietzsche',
@@ -104,13 +95,6 @@ export const PHILOSOPHERS: Philosopher[] = [
       'identificar moralismos e padrões culturais aceitos sem reflexão. Sua ' +
       'ênfase na criação e na afirmação da vida levanta uma pergunta ' +
       'exigente: que valores escolheríamos se assumíssemos responsabilidade ' +
-      'por nossa própria existência?',
-    tags: [
-      'Crítica dos Valores',
-      'Além-do-homem',
-      'Amor Fati',
-      'Niilismo',
-      'Vontade de Potência',
-    ],
+      'por nossa própria existência?'
   },
 ];

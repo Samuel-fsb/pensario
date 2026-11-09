@@ -59,6 +59,24 @@ export const Navbar: React.FC<NavbarProps> = ({ transparent = false }) => {
     setMobileMenuOpen(false);
   };
 
+  // Trava a rolagem da página quando o menu mobile estiver aberto
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
+  // Fecha o menu mobile ao navegar para outra página
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
   // Smooth scroll to section anchor, handling cross-page navigation
   const handleSectionLink = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -168,71 +186,96 @@ export const Navbar: React.FC<NavbarProps> = ({ transparent = false }) => {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className={styles.mobileDrawer}>
-          <nav className={styles.mobileNav}>
-            <NavLink
-              to="/"
-              onClick={closeMobileMenu}
-              className={styles.mobileNavLink}
-              end
-            >
-              Início
-            </NavLink>
-            <NavLink
-              to="/biblioteca"
-              onClick={closeMobileMenu}
-              className={styles.mobileNavLink}
-            >
-              Biblioteca
-            </NavLink>
-            {isAuthenticated ? (
-              <NavLink
-                to="/perfil"
-                onClick={closeMobileMenu}
-                className={styles.mobileNavLink}
-              >
-                Perfil
-              </NavLink>
-            ) : (
-              <a
-                href="/#sobre"
-                onClick={(e) => handleSectionLink(e, 'sobre')}
-                className={styles.mobileNavLink}
-              >
-                Sobre
-              </a>
-            )}
-
-            <div className={styles.mobileActionWrapper}>
-              {isAuthenticated ? (
-                <button
-                  type="button"
-                  onClick={() => {
-                    closeMobileMenu();
-                    handleLogout();
-                  }}
-                  className={styles.mobileLogoutButton}
-                >
-                  <SignOut size={18} weight="bold" />
-                  <span>Sair da conta</span>
-                </button>
-              ) : (
-                <Link
-                  to="/login"
-                  onClick={closeMobileMenu}
-                  className={styles.mobileLoginLink}
-                >
-                  <Button variant="primary" size="md" fullWidth>
-                    Entrar
-                  </Button>
-                </Link>
-              )}
-            </div>
-          </nav>
+      {/* Mobile Fullscreen Drawer with Slide from Right */}
+      <div
+        className={`${styles.mobileDrawer} ${mobileMenuOpen ? styles.open : ''}`}
+        aria-hidden={!mobileMenuOpen}
+      >
+        <div className={styles.mobileDrawerHeader}>
+          <PensarioLogo
+            variant="horizontal"
+            theme="light"
+            size="md"
+            to="/"
+            onClick={closeMobileMenu}
+          />
+          <button
+            type="button"
+            className={styles.mobileCloseBtn}
+            onClick={closeMobileMenu}
+            aria-label="Fechar menu"
+          >
+            <X size={26} weight="bold" />
+          </button>
         </div>
-      )}
+
+        <nav className={styles.mobileNav}>
+          <NavLink
+            to="/"
+            onClick={closeMobileMenu}
+            className={({ isActive }) =>
+              `${styles.mobileNavLink} ${isActive ? styles.mobileActive : ''}`
+            }
+            end
+          >
+            <span>Início</span>
+          </NavLink>
+          <NavLink
+            to="/biblioteca"
+            onClick={closeMobileMenu}
+            className={({ isActive }) =>
+              `${styles.mobileNavLink} ${isActive ? styles.mobileActive : ''}`
+            }
+          >
+            <span>Biblioteca</span>
+          </NavLink>
+          {isAuthenticated ? (
+            <NavLink
+              to="/perfil"
+              onClick={closeMobileMenu}
+              className={({ isActive }) =>
+                `${styles.mobileNavLink} ${isActive ? styles.mobileActive : ''}`
+              }
+            >
+              <span>Perfil</span>
+            </NavLink>
+          ) : (
+            <a
+              href="/#sobre"
+              onClick={(e) => handleSectionLink(e, 'sobre')}
+              className={`${styles.mobileNavLink} ${sobreInView ? styles.mobileActive : ''}`}
+            >
+              <span>Sobre</span>
+            </a>
+          )}
+
+          <div className={styles.mobileActionWrapper}>
+            {isAuthenticated ? (
+              <button
+                type="button"
+                onClick={() => {
+                  closeMobileMenu();
+                  handleLogout();
+                }}
+                className={styles.mobileLogoutButton}
+              >
+                <SignOut size={20} weight="bold" />
+                <span>Sair da conta</span>
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                onClick={closeMobileMenu}
+                className={styles.mobileLoginLink}
+              >
+                <Button variant="primary" size="lg" fullWidth>
+                  Entrar
+                </Button>
+              </Link>
+            )}
+          </div>
+        </nav>
+      </div>
     </header>
   );
 };

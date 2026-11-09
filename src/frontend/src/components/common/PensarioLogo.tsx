@@ -9,6 +9,7 @@ interface PensarioLogoProps {
   size?: 'sm' | 'md' | 'lg';
   to?: string;
   className?: string;
+  onClick?: () => void;
 }
 
 export const PensarioLogo: React.FC<PensarioLogoProps> = ({
@@ -17,6 +18,7 @@ export const PensarioLogo: React.FC<PensarioLogoProps> = ({
   size = 'md',
   to = '/',
   className = '',
+  onClick,
 }) => {
   const isLight = theme === 'light';
 
@@ -111,7 +113,12 @@ export const PensarioLogo: React.FC<PensarioLogoProps> = ({
 
   if (to) {
     return (
-      <Link to={to} className={styles.link} aria-label="Pensário - Início">
+      <Link
+        to={to}
+        onClick={onClick}
+        className={styles.link}
+        aria-label="Pensário - Início"
+      >
         {content}
       </Link>
     );
