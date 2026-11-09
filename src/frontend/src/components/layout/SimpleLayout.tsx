@@ -20,6 +20,8 @@ export const SimpleLayout: React.FC<SimpleLayoutProps> = ({
     <div className={styles.pageContainer}>
       <Navbar />
 
+      <div className={styles.navOffset} />
+
       <main className={styles.mainContent}>
         <div className={styles.card}>
           {showIcon && (
@@ -35,9 +37,6 @@ export const SimpleLayout: React.FC<SimpleLayoutProps> = ({
           <div className={styles.bodyContent}>{children}</div>
         </div>
       </main>
-
-      {/* Bottom Mountain & Pine Tree Landscape Decoration */}
-      <div className={styles.bottomLandscape} aria-hidden="true" />
     </div>
   );
 };

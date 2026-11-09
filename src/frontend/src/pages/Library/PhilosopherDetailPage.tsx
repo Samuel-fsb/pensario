@@ -44,77 +44,89 @@ export const PhilosopherDetailPage: React.FC = () => {
       <div className={styles.navOffset} />
 
       <main className={styles.mainContent}>
-        {/* Top Header Bar: Breadcrumb + Back Button */}
-        <div className={styles.topBar}>
-          <nav className={styles.breadcrumb} aria-label="Navegação estrutural">
-            <Link
-              to="/biblioteca"
-              className={styles.breadcrumbHome}
-              aria-label="Biblioteca"
-            >
-              <House size={18} weight="bold" />
-            </Link>
-            <Link to="/biblioteca" className={styles.breadcrumbLink}>
-              Biblioteca
-            </Link>
-            <span className={styles.breadcrumbSeparator}>›</span>
-            <span className={styles.breadcrumbCurrent}>{philosopher.name}</span>
-          </nav>
-
-          <Link to="/biblioteca" className={styles.backBtnLink}>
-            <Button
-              variant="outline"
-              size="sm"
-              leftIcon={<ArrowLeft size={16} weight="bold" />}
-            >
-              Voltar à biblioteca
-            </Button>
-          </Link>
-        </div>
-
-        {/* Two-column Detail Content */}
         <article className={styles.detailCard}>
-          {/* Left Column: Portrait */}
-          <div className={styles.portraitColumn}>
-            <div className={styles.portraitWrapper}>
-              <img
-                src={portraitSrc}
-                alt={`Retrato em busto de ${philosopher.name}`}
-                className={styles.portraitImage}
-              />
-            </div>
+          {/* Top Bar inside Card: Breadcrumb + Back Button */}
+          <div className={styles.topBar}>
+            <nav
+              className={styles.breadcrumb}
+              aria-label="Navegação estrutural"
+            >
+              <Link
+                to="/biblioteca"
+                className={styles.breadcrumbHome}
+                aria-label="Biblioteca"
+              >
+                <House size={18} weight="bold" />
+              </Link>
+              <Link to="/biblioteca" className={styles.breadcrumbLink}>
+                Biblioteca
+              </Link>
+              <span className={styles.breadcrumbSeparator}>›</span>
+              <span className={styles.breadcrumbCurrent}>
+                {philosopher.name}
+              </span>
+            </nav>
+
+            <Link to="/biblioteca" className={styles.backBtnLink}>
+              <Button
+                variant="outline"
+                size="sm"
+                leftIcon={<ArrowLeft size={16} weight="bold" />}
+                className={styles.backButton}
+              >
+                Voltar à biblioteca
+              </Button>
+            </Link>
           </div>
 
-          {/* Right Column: Editorial Text */}
-          <div className={styles.textColumn}>
-            <h1 className={styles.philosopherName}>{philosopher.name}</h1>
-
-            <section className={styles.textSection}>
-              <h2 className={styles.sectionHeading}>Quem foi</h2>
-              <p className={styles.sectionParagraph}>{philosopher.whoWas}</p>
-            </section>
-
-            <section className={styles.textSection}>
-              <h2 className={styles.sectionHeading}>Principais ideias</h2>
-              <p className={styles.sectionParagraph}>{philosopher.mainIdeas}</p>
-            </section>
-
-            <section className={styles.textSection}>
-              <h2 className={styles.sectionHeading}>Por que ainda importa?</h2>
-              <p className={styles.sectionParagraph}>
-                {philosopher.whyItMatters}
-              </p>
-            </section>
-
-            {philosopher.tags && (
-              <div className={styles.tagsWrapper}>
-                {philosopher.tags.map((tag) => (
-                  <span key={tag} className={styles.tag}>
-                    {tag}
-                  </span>
-                ))}
+          {/* Two-column Detail Content with Large Portrait */}
+          <div className={styles.cardContent}>
+            {/* Left Column: Large Portrait Image */}
+            <div className={styles.portraitColumn}>
+              <div className={styles.portraitWrapper}>
+                <img
+                  src={portraitSrc}
+                  alt={`Retrato ilustrado de ${philosopher.name}`}
+                  className={styles.portraitImage}
+                />
               </div>
-            )}
+            </div>
+
+            {/* Right Column: Editorial Text */}
+            <div className={styles.textColumn}>
+              <h1 className={styles.philosopherName}>{philosopher.name}</h1>
+
+              <section className={styles.textSection}>
+                <h2 className={styles.sectionHeading}>Quem foi</h2>
+                <p className={styles.sectionParagraph}>{philosopher.whoWas}</p>
+              </section>
+
+              <section className={styles.textSection}>
+                <h2 className={styles.sectionHeading}>Principais ideias</h2>
+                <p className={styles.sectionParagraph}>
+                  {philosopher.mainIdeas}
+                </p>
+              </section>
+
+              <section className={styles.textSection}>
+                <h2 className={styles.sectionHeading}>
+                  Por que ainda importa?
+                </h2>
+                <p className={styles.sectionParagraph}>
+                  {philosopher.whyItMatters}
+                </p>
+              </section>
+
+              {philosopher.tags && (
+                <div className={styles.tagsWrapper}>
+                  {philosopher.tags.map((tag) => (
+                    <span key={tag} className={styles.tag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </article>
       </main>

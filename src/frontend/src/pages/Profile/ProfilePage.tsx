@@ -350,9 +350,6 @@ export const ProfilePage: React.FC = () => {
           </div>
         </div>
       </main>
-
-      {/* Bottom Mountain Silhouette */}
-      <div className={styles.bottomLandscape} aria-hidden="true" />
     </div>
   );
 };

@@ -12,6 +12,8 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({ quote, children }) => {
     <div className={styles.authContainer}>
       <Navbar />
 
+      <div className={styles.navOffset} />
+
       <main className={styles.mainContent}>
         <div className={styles.cardWrapper}>
           {/* Left: Illustrated Landscape with Quote */}

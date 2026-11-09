@@ -35,11 +35,8 @@ export const LibraryPage: React.FC = () => {
     <div className={styles.libraryContainer}>
       <Navbar />
 
-      {/* Fixed navbar offset */}
-      <div className={styles.navOffset} />
-
-      {/* Hero banner with landscape background */}
-      <div className={styles.heroBanner}>
+      {/* Hero banner with landscape background - touches menu directly with no white gap */}
+      <section className={styles.heroBanner}>
         <div className={styles.heroBannerBg} />
         <div className={styles.heroBannerOverlay} />
         <div className={styles.heroBannerContent}>
@@ -47,12 +44,8 @@ export const LibraryPage: React.FC = () => {
           <p className={styles.subtitle}>
             Escolha um pensador para começar a explorar.
           </p>
-        </div>
-      </div>
 
-      <main className={styles.mainContent}>
-        <div className={styles.contentHeader}>
-          {/* Search bar */}
+          {/* Search bar inside hero section */}
           <div className={styles.searchWrapper}>
             <label htmlFor="search-input" className={styles.srOnly}>
               Buscar filósofos ou conceitos
@@ -63,7 +56,7 @@ export const LibraryPage: React.FC = () => {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Buscar filósofos ou conceitos"
+              placeholder="Buscar filósofos ou conceitos..."
               className={styles.searchInput}
             />
             {searchTerm && (
@@ -78,7 +71,9 @@ export const LibraryPage: React.FC = () => {
             )}
           </div>
         </div>
+      </section>
 
+      <main className={styles.mainContent}>
         {/* Philosophers Grid */}
         <div className={styles.gridContainer}>
           {filteredPhilosophers.length > 0 ? (

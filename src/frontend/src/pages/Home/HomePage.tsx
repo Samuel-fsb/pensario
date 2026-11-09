@@ -64,19 +64,6 @@ export const HomePage: React.FC = () => {
             )}
           </div>
         </div>
-
-        {/* Link do Portfólio no final da seção de início */}
-        <div className={styles.portfolioLinkWrapper}>
-          <a
-            href="https://portfolio-samuel-bezerra.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.portfolioLink}
-          >
-            <span>Conheça meu portfólio • Samuel Bezerra</span>
-            <ArrowUpRight size={16} weight="bold" />
-          </a>
-        </div>
       </section>
 
       {/* Seção Sobre (PRD 5.1 / 5.2) */}
@@ -129,14 +116,25 @@ export const HomePage: React.FC = () => {
           <div className={styles.footerBrand}>
             <PensarioLogo variant="horizontal" theme="light" size="sm" to="/" />
             <p className={styles.footerTagline}>
-              Biblioteca digital de filosofia e reflexão.
+              Pensário digital de filosofia e reflexão.
+            </p>
+            <p className={styles.copyright}>
+              © {new Date().getFullYear()} Pensário. Todos os direitos
+              reservados.
             </p>
           </div>
 
-          <p className={styles.copyright}>
-            © {new Date().getFullYear()} Pensário. Todos os direitos
-            reservados.
-          </p>
+          <div className={styles.footerRight}>
+            <a
+              href="https://portfolio-samuel-bezerra.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.portfolioLink}
+            >
+              <span>Site desenvolvido por Samuel Bezerra</span>
+              <ArrowUpRight size={16} weight="bold" />
+            </a>
+          </div>
         </div>
       </footer>
     </div>
